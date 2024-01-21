@@ -1,2 +1,67 @@
-first_col, second_col, third_col
-some, raw, data
+_id,Approved IMIT Property,Registered Property Owner,First Year of Grant Period,Proposed Total Gross Floor Area (sq.ft.),Is the site considered a Brownfield?,IMIT Eligible Use
+1,100 Adelaide Street West,"OREC (RAC) HOLDINGS, Inc. and 9486798 Canada Inc.",2018,930443,No,Office
+2,101 Commissioners Street,City of Toronto Economic Development and Culture (Create TO),TBD,325000,Yes,Film Studio Complex
+3,106 North Queen Street,Future Bakery Limited,TBD,53040,No,Manufacturing
+4,120 Bremner Blvd,bcIMC HOLDCO (2007) Inc.,2016,868432,No,Office
+5,125-155 Queens Quay E,Waterfront Toronto,TBD,421413,Yes,Office
+6,1295 Ormont Drive,Caplink Limited,2018,172532,No,Manufacturing
+7,130-132 Queens Quay E,Daniels Waterfront Corporation,TBD,450000,Yes,Office
+8,134 Peter Street,1302207 Ontario Limited,2016,309085,Yes,Office
+9,1395 Tapscott Rd,First Gulf King Street Inc. and Sun Life Assurance Company of Canada,TBD,386026,No,Manufacturing
+10,143-177 Lake Shore Blvd E & 26 Richardson Street,Daniels QQ Corporation,TBD,762000,Yes,Office
+11,150 Bartor Rd,2535767 Ontario Inc.,2021,137500,No,Manufacturing
+12,150 Sterling Road,HTC Sterling Road Property 5 Ltd,TBD,195247,Yes,Office
+13,150 Sterling Road,HTC Sterling Road Property 3 Ltd.,TBD,84991,Yes,Office
+14,158 Sterling Road,Castlepoint Greybrook Auto Bldg Inc.,2019,110000,Yes,Office
+15,165 Milner Avenue,1599544 Ontario Inc.,TBD,53085,No,Manufacturing
+16,171 East Liberty Street,Liberty Market Buildings Inc,TBD,131750,No,Office
+17,1755 Steeles Avenue West,SANOFI PASTEUR LIMITED,TBD,170214,No,Manufacturing
+18,180 John Street,180 John St Inc,2021,50784,No,Office
+19,180 Shaw Street,Multiple Property Owners,2015,76983,No,Creative Industries
+20,18 York St,18 York Street Holdings Inc,2012,861113,Yes,Office
+21,19 Duncan Street,19 Duncan Property Inc.,TBD,138768,No,Office
+22,1 York Street,One York Street Inc.,2018,817013,Yes,Office
+23,22 Adelaide Street West,Bay Adelaide East Limited and VPMA Bay Adelaide Property Ltd.,2017,873381,No,Office
+24,245 Queens Street E and 348 Richmond St E,Richmond Residential Limited Partnership,TBD,252000,Yes,Office
+25,25 Dockside Drive,CQ 25 Dockside Property Inc,2011,533900,Yes,Office
+26,25 Ontario Street,First Gulf Ontario Street Corporation,TBD,445745,No,Office
+27,255 Queens Quay East,City of Toronto Economic Development Corp.,TBD,251240,Yes,Office
+28,"261-285 Queen St. East, 384-410 Richmond St. & 90 Ontario St., 360-382 Richmond Street",Queen Ontario LP,TBD,818379,Yes,Office
+29,280 Bremner Blvd,Canada Lands Company CLC Limited,2014,141297,Yes,Tourism Attraction
+30,281 Commissioners Street,Build Toronto Holdings One Inc.,2011,260500,Yes,Film Studio Complex
+31,28 Bathurst Street,City of Toronto,2020,98838,No,Creative Industries
+32,2 Fraser Ave,2391370 Ontario Ltd,2017,108608,No,Office
+33,30 Widmer St,Widmer- Adelaide Corp & Hotel San Francisco S.A,NA,195905,Yes,NA
+34,324 Cherry Street,3C Lakeshore Inc,TBD,204212,Yes,Office
+35,333-351 King Street East,First Gulf King Street Inc.,TBD,600000,No,Office
+36,333 King Street East,First Gulf King Street East and Sun Life Assurance Company of Canada,2014,101955,No,Office
+37,3484 & 3470 Dundas Street W,3484 Dundas Street West Limited,NA,156474,Yes,BRTA Only - Employment
+38,351 King Street East,First Gulf KEC Development Ltd.,2018,732580,No,Office
+39,37 Shorncliffe Rd,Bayvest (37 Shorncliffe) GP INC.,NA,182000,Yes,BRTA Only - Employment
+40,40 Hanna Ave,8841896 Canada Inc,TBD,131833,Yes,Office
+41,43 Parliament Street,Equinix Canada Ltd.,2016,200467,Yes,Information Services and Data Processing
+42,4420-4460 Chesswood Drive,Chesswood Holdings Inc.,2013,121600,No,Food and Beverage Wholesaling
+43,45 and 141 Bay Street and the Metrolinx Downtown Rail Corridor,Ivanhoe Cambridge and Metrolinx,TBD,2700000,Yes,Transformative
+44,466-468 Dovercourt Road,466DCR Urban Properties Inc.,TBD,10700,No,Creative Industries
+45,4800 Yonge Street,Menkes 4800 Yonge Street,TBD,162247,Yes,Office
+46,489-539 King Street West,Allied Properties REIT,TBD,588882,Yes,Office
+47,500 Lake Shore Blvd W,500 LS Limited,2021,824000,No,Office
+48,"506, 508, 520 & 530 Front Street West and 1, 5, 9, 13 & 25 Portland Street",Portland Commons LP,TBD,525505,Yes,Office
+49,507 King Street East (and 520 Cherry Street),507 King East Management Ltd,TBD,57479,No,Office
+50,51 Grand Marshall Drive,Fortress Technology Inc.,2018,28643,No,Manufacturing
+51,555 Petrolia Road,Fifty-Five Developments Ltd.,2013,446744,No,Manufacturing
+52,55 Medulla Avenue,8710015 Canada Inc,2016,157013,No,Manufacturing
+53,57-77 Wade Street,57 - 77 Wade Development GP Ltd,TBD,147562,Yes,Office
+54,588 Dundas Street E,Toronto Community Housing Corporation,2014,57996,No,Creative Industries
+55,591 Dundas St East (Paintbox),Parliament and Gerrard Development Corporation,2014,8632,No,Incubator
+56,60 (80) Atlantic Avenue,Hullmark Developments Ltd,2021,85143,Yes,Office
+57,60 Mobile Drive,Ontario Secondary School Teachers' Federation,TBD,102257,No,Office
+58,620 King Street W,RA King/ Portland Nominee Inc,2020,268565,Yes,Office
+59,655 Supertest Road,Eleven Investments Limited,TBD,269676,Yes,Manufacturing
+60,65-89 King St E & 46 Colborne St,Multiple,TBD,388738,Yes,Office
+61,661 University Avenue,MaRS Phase 2 Inc.,TBD,779994,No,Scientific Research and Development
+62,663 Warden Ave,Rataj Holdings Inc.,2016,40117,No,Food and Beverage Wholesaling
+63,772 Dovercourt Road,HM RB (772 Dovercourt) Ltd.,2017,32571,No,Office
+64,88 Queens Quay W,85 Harbour Street Holdings Inc. and CPP Investment Board Real Estate Holdings Inc.,2015,944619,Yes,Office
+65,915 Lakeshore Blvd,City of Toronto Economic Development Corp.,TBD,65600,Yes,Film Studio Complex
+66,95 Commander Blvd,Byron Nelson Holdings Limited,2016,47889,No,Manufacturing
