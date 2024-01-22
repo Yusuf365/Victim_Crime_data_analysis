@@ -1,7 +1,7 @@
 #### Preamble ####
 # Purpose: Simulated Data (IMIT)
 # Author: Mohammed Yusuf Shaikh
-# Date: `r format(Sys.Date(), "%d %B %Y")
+# Date: format(Sys.Date(), "%d %B %Y")
 # Contact: mohammedyusuf.shaikh@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: [...UPDATE THIS...]
@@ -9,57 +9,35 @@
 
 
 #### Workspace setup ####
-install.packages("opendatatoronto")
-install.packages("knitr")
 install.packages("tidyverse")
 intsall.packages("janitor")
+
+#### Using Library ####
 library(tidyverse)
-library(knitr)
 library(janitor)
-library(lubridate)
-library(opendatatoronto)
-library(tidyverse)
 library(tibble)
 
 #### Simulate data ####
 # Set the seed for reproducibility
+# Set the seed for reproducibility
 set.seed(250)  
 
-# Seeting number of rows
-n_id <- 50
+# Setting number of rows
+n_id <- 100
 
-# Create a Simulated data
-stimulus_data <- tibble(
-  id = 1:n_id,
-  First_Year_of_Grant_Period = sample(c(2018, 2019, 2020, 2021), n_id, replace = TRUE),
-  total_sq_ft = round(runif(n_id, min = 50000, max = 1000000)),
-  Is_the_site_considered_a_Brownfield = sample(c("Yes", "No"), n_id, replace = TRUE),
-  IMIT_Eligible_Use = sample(c("Office", "Film Studio Complex", "Manufacturing", "BRTA Only - Employment", "Incubator", "Creative Industries", "Tourism Attraction", "Information Services and Data Processing", "Food and Beverage Wholesaling", "Scientific Research and Development", "Transformative"), n_id, replace = TRUE)
+# Creating a simulated data 
+stimulated_data <- tibble(
+  "Victim_id" = 1:n_id,
+  "REPORT_YEAR" = sample(2014:2022, n_id, replace = TRUE),
+  "CATEGORY" = 'Crimes Against the Person',
+  "SUBTYPE" = sample(c('Sexual Violation', 'Assault', 'Robbery', 'Other'), n_id, replace = TRUE),
+  "ASSAULT_SUBTYPE" = sample(c('Aggravated', 'Non-Aggravated', 'N/A', 'Assault on Peace Officer'), n_id, replace = TRUE),
+  "SEX" = sample(c('M', 'F', 'U'), n_id, replace = TRUE),
+  "AGE_GROUP" = sample(c('Adult', 'Youth', 'Child', 'Unknown'), n_id, replace = TRUE),
+  "AGE_COHORT" = sample(c('<12', '12 to 17', '18 to 24', '25 to 34', '35 to 44', '45 to 54', '55 to 64', '65+', 'Unknown'), n_id, replace = TRUE),
+  "COUNT" = sample(1:200, n_id, replace = TRUE) 
 )
 
-# View first and last rows
-head(stimulus_data)
-tail(stimulus_data)
-
-
-
-# Creating Test
-
-# Test 1 - Test checks if the length of unique values is exactly 11.
-stimulus_data$IMIT_Eligible_Use |>
-  unique() |>
-  length() == 11
-
-# Test 2 - Min. and Max. for Grant period(In Years) for stimulated data that is 2018 to 2021
-stimulus_data$First_Year_of_Grant_Period |> min() == 2018
-stimulus_data$First_Year_of_Grant_Period |> max() == 2021
-
-# Test 3 - Check if total sq ft between 500000-1000000
-stimulus_data$total_sq_ft |> min() >= 50000
-stimulus_data$total_sq_ft |> max() <= 1000000
-
-# Test 4 - Check if Total_sq_ft has a class i.e. "numeric" column
-stimulus_data$total_sq_ft |> class() == "numeric"
-
-
-
+# View first & last 6 rows of the stimulated data
+head(stimulated_data)
+tail(stimulated_data)

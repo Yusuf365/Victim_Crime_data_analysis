@@ -1,6 +1,6 @@
 #### Preamble ####
 # Purpose: Downloads and saves the data from [...UPDATE THIS...]
-# Author: Mohammed Yusfu Shaikh
+# Author: Mohammed Yusuf Shaikh
 # Date: 11 February 2023 [...UPDATE THIS...]
 # Contact: mohammedyusuf.shaikh@mail.utoronto.ca
 # License: MIT
@@ -19,26 +19,24 @@ library(janitor)
 
 #### Download data ####
 
-# get package
-package <- show_package("030dff58-8212-4b80-b79e-0701b59af918")
+# Get package from Open Data Toronto
+package <- show_package("police-annual-statistical-report-victims-of-crime")
 package
 
 # get all resources for this package
-resources <- list_package_resources("030dff58-8212-4b80-b79e-0701b59af918")
+resources <- list_package_resources("police-annual-statistical-report-victims-of-crime")
 
 # identify datastore resources; by default, Toronto Open Data sets datastore resource format to CSV for non-geospatial and GeoJSON for geospatial resources
 datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'))
 
 # load the first datastore resource as a sample
-the_raw_data <- filter(datastore_resources, row_number()==1) %>% get_resource()
+the_raw_data_crime_victims <- filter(datastore_resources, row_number()==1) %>% get_resource()
 data
-
-
 
 
 #### Save data ####
 # [...UPDATE THIS...]
 # change the_raw_data to whatever name you assigned when you downloaded it.
-write_csv(the_raw_data, "inputs/data/raw_data.csv") 
+write_csv(the_raw_data_crime_victims, "inputs/data/raw_data.csv") 
 
          
