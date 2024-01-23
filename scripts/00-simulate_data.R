@@ -32,6 +32,6 @@ stimulated_data <- tibble(
   "COUNT" = sample(1:200, 500, replace = TRUE) 
 )
 
-# View first & last 6 rows of the stimulated data
+# View first & last 6 rows of the stimulated victim data
 head(stimulated_data)
 tail(stimulated_data)

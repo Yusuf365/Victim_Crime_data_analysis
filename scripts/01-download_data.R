@@ -1,11 +1,10 @@
 #### Preamble ####
-# Purpose: Downloads and saves the data from [...UPDATE THIS...]
+# Purpose: The raw data for victim crimes
 # Author: Mohammed Yusuf Shaikh
-# Date: 11 February 2023 [...UPDATE THIS...]
+# Date: 22 January 2024
 # Contact: mohammedyusuf.shaikh@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Pre-requisites: Packages to be installed
 
 
 #### Workspace setup ####
