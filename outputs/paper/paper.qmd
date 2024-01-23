@@ -218,4 +218,3 @@ plot(first_model, "rhat")
 
 # References
 
-
