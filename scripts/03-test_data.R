@@ -30,6 +30,6 @@ cleaned_victim_data$report_year |> min() == 2014
 cleaned_victim_data$report_year |> max() == 2022
 
 # Testing class for victim_count data
-cleaned_victim_data$count |> class() == "numeric"
+cleaned_victim_data$victim_count |> class() == "numeric"
 
 
