@@ -1,13 +1,10 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
-author: 
-  - First author
-  - Another author
+title: "Analyzing Trends in Crime Against Persons: Insights from the Toronto Police Annual Statistical Report"
+author: "Mohammed Yusuf Shaikh"
 thanks: "Code and data are available at: LINK."
 date: today
-date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+date-format: 22 January 2024
+abstract: "Public Safety and security are a paramount concern in the 20th century, the analysis of statistics in Victimology helps to visualize and derive the conclusions of urban crime dynamics. This analytical report delves into the trends of victims of a certain crime in Toronto from the year 2014 to 2022. Through a series of data visualization approach to examine the relationship between crime incidents and demographic factors. The data reveals significant fluctuations in crime rates in correspond to the socio-economic shifts, including a notable dip in crimes reported during pandemic between 2019-2020. The visualization of the certain trends provides a compelling narrative on the dynamics of victims of crime in Toronto, advocating for all the policymakers to call for a reevaluation of current approaches to public safety and crime prevention."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -115,8 +112,6 @@ Our results are summarized in @tbl-modelresults.
 
 library(rstanarm)
 
-first_model <-
-  readRDS(file = here::here("outputs/models/first_model.rds"))
 ```
 
 ```{r}
@@ -126,13 +121,6 @@ first_model <-
 #| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
 #| warning: false
 
-modelsummary::modelsummary(
-  list(
-    "First model" = first_model
-  ),
-  statistic = "mad",
-  fmt = 2
-)
 ```
 
 
@@ -169,26 +157,7 @@ In @fig-ppcheckandposteriorvsprior-1 we implement a posterior predictive check. 
 
 In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. This shows... 
 
-```{r}
-#| eval: true
-#| echo: false
-#| message: false
-#| warning: false
-#| label: fig-ppcheckandposteriorvsprior
-#| layout-ncol: 2
-#| fig-cap: "Examining how the model fits, and is affected by, the data"
-#| fig-subcap: ["Posterior prediction check", "Comparing the posterior with the prior"]
 
-pp_check(first_model) +
-  theme_classic() +
-  theme(legend.position = "bottom")
-
-posterior_vs_prior(first_model) +
-  theme_minimal() +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "bottom") +
-  coord_flip()
-```
 
 ## Diagnostics
 
@@ -206,9 +175,7 @@ posterior_vs_prior(first_model) +
 #| fig-subcap: ["Trace plot", "Rhat plot"]
 #| layout-ncol: 2
 
-plot(first_model, "trace")
 
-plot(first_model, "rhat")
 ```
 
 
