@@ -3,7 +3,7 @@ title: "Analyzing Trends in Crime Against Persons: Insights from the Toronto Pol
 author: "Mohammed Yusuf Shaikh"
 thanks: "Code and data are available at: LINK."
 date: today
-date-format: 22 January 2024
+date-format: long
 abstract: "Public Safety and security are a paramount concern in the 20th century, the analysis of statistics in Victimology helps to visualize and derive the conclusions of urban crime dynamics. This analytical report delves into the trends of victims of a certain crime in Toronto from the year 2014 to 2022. Through a series of data visualization approach to examine the relationship between crime incidents and demographic factors. The data reveals significant fluctuations in crime rates in correspond to the socio-economic shifts, including a notable dip in crimes reported during pandemic between 2019-2020. The visualization of the certain trends provides a compelling narrative on the dynamics of victims of crime in Toronto, advocating for all the policymakers to call for a reevaluation of current approaches to public safety and crime prevention."
 format: pdf
 number-sections: true
@@ -16,171 +16,37 @@ bibliography: references.bib
 #| message: false
 
 library(tidyverse)
-library(palmerpenguins)
+library(AER)
+library(opendatatoronto)
+library(dplyr)
+library(readr)
+library(janitor)
+library(ggplot2)
+
+# Loading Clean data & Read data
+cleaned_victim_data <- read_csv(cleaned_data, file="outputs/data/cleaned_lead_data.csv")
 ```
 
 
 # Introduction
+The concern of Public safety in the Urban society is a necessary step towards safeguarding people of that community. The city of Toronto has various socio-economic challenges one of them being Crime against a person. A crime incident might leave a victim and our report aims to explore the patterns and trend of crimes against the person. The paper aims to understand how this trends have evolved among victims and analyzing there  demograpics from 2014 to 2022. To elaborate, the report context is not only quantifying crime victims but also interpret and explain whereby it motivates to a better approach towards urban safety and policies. The Criminal victimization is a frightening and unsettling experience for many Canadians (Cite). 
 
-You can and should cross-reference sections and sub-sections. 
+Victimology is a vast sub-category of criminology to understand various emotional factors and its causation, however based on our police annual report – victims of  crime showcase a statistical record based on which the report will share the knowledge to work on the gap to understand between victim demographics and crime. This report addresses this gap by visualizing crime statistics through a demographic lens, thereby unveiling patterns that may not be evident in numerical data alone
 
-The remainder of this paper is structured as follows. @sec-data....
+Through R programming language [@R] we analyze the data obtained from Open data Toronto [Open data Toronto]. This dataset provides a detailed account of all recorded count of victim under the jurisdiction of the Toronto Police Services over an eight-period. Our research offers an examination of cleaned data points and produced visual formats that reveal the shapes the crime type as well as their victims across different genders and age cohorts. The analysis, supplemented with various analytical tools like Tidyverse [@tidyverse], Janitor [@janitor], and Knitr [@knitr], delves deep into the trends, revealing patterns that could have implications for policy formulation and implementation.
 
+The Introduction is followed by the Data section. Within the data section we talk about the data source used for this report, the data cleaning process applied and the result that is the visual analysis of trends and pattern involved. The Discussion section shares additional insights into the data findings, as well as discussing measurement errors and limitations of this analysis. Lastly, the document summarizes the analysis.
 
+# Data
 
-# Data {#sec-data}
 
-Some of our data is of penguins (@fig-bills), from @palmerpenguins.
 
-```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
-#| echo: false
 
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
-```
 
-Talk more about it.
 
-And also planes (@fig-planes). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
 
-```{r}
-#| label: fig-planes
-#| fig-cap: Relationship between wing length and width
-#| echo: false
-#| warning: false
-#| message: false
 
-analysis_data <- read_csv(here::here("outputs/data/analysis_data.csv"))
 
-analysis_data |> 
-  ggplot(aes(x = width, y = length)) +
-  geom_point(alpha = 0.8) +
-  theme_minimal() +
-  labs(x = "Wing width (mm)",
-       y = "Wing length (mm)")
-```
-
-Talk way more about it. 
-
-
-
-# Model
-
-The goal of our modelling strategy is twofold. Firstly,...
-
-Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in [Appendix -@sec-model-details].
-
-## Model set-up
-
-Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.  
-
-\begin{align} 
-y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &= \alpha + \beta_i + \gamma_i\\
-\alpha &\sim \mbox{Normal}(0, 2.5) \\
-\beta &\sim \mbox{Normal}(0, 2.5) \\
-\gamma &\sim \mbox{Normal}(0, 2.5) \\
-\sigma &\sim \mbox{Exponential}(1)
-\end{align}
-
-We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
-
-
-### Model justification
-
-We expect a positive relationship between the size of the wings and time spent aloft. In particular...
-
-We can use maths by including latex between dollar signs, for instance $\theta$.
-
-
-# Results
-
-Our results are summarized in @tbl-modelresults.
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-library(rstanarm)
-
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| label: tbl-modelresults
-#| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
-#| warning: false
-
-```
-
-
-
-
-# Discussion
-
-## First discussion point {#sec-first-point}
-
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
-
-## Second discussion point
-
-## Third discussion point
-
-## Weaknesses and next steps
-
-Weaknesses and next steps should also be included.
-
-\newpage
-
-\appendix
-
-# Appendix {-}
-
-
-# Additional data details
-
-# Model details {#sec-model-details}
-
-## Posterior predictive check
-
-In @fig-ppcheckandposteriorvsprior-1 we implement a posterior predictive check. This shows...
-
-In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. This shows... 
-
-
-
-## Diagnostics
-
-@fig-stanareyouokay-1 is a trace plot. It shows... This suggests...
-
-@fig-stanareyouokay-2 is a Rhat plot. It shows... This suggests...
-
-```{r}
-#| echo: false
-#| eval: true
-#| message: false
-#| warning: false
-#| label: fig-stanareyouokay
-#| fig-cap: "Checking the convergence of the MCMC algorithm"
-#| fig-subcap: ["Trace plot", "Rhat plot"]
-#| layout-ncol: 2
-
-
-```
-
-
-
-\newpage
 
 
 # References

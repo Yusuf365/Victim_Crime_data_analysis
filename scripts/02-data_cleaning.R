@@ -37,7 +37,7 @@ head(cleaned_victim_data)
 
 
 # Save data in inputs/data
-write_csv(cleaned_victim_data, file="outputs/data/cleaned_lead_data.csv")
+write_csv(cleaned_victim_data, file="outputs/data/cleaned_data.csv")
 
 
 
