@@ -1,10 +1,10 @@
-# Starter folder
+# Analyzing Trends in Crime Against Persons: Insights from the Toronto Police Annual Statistical Report
 
 ## Overview
+This paper explicitly shows the demographic of victims and trends in crime in Toronto from 2014 to 2022.
 
-This repo provides students with a foundation for their own projects associated with *Telling Stories with Data*. You do not need every aspect for every paper and you should delete aspects that you do not need.
 
-To use this folder, click the green "Code" button", then "Download ZIP". Move the downloaded folder to where you want to work on your own computer, and then modify it to suit.
+This GitHub Repository contains all the files to generate the paper Analyzing Trends in Crime Against Persons: Insights from the Toronto Police Annual Statistical Report
 
 ## File Structure
 
