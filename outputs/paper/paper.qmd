@@ -22,9 +22,14 @@ library(dplyr)
 library(readr)
 library(janitor)
 library(ggplot2)
+library(knitr)
 
-# Loading Clean data & Read data
-cleaned_victim_data <- read_csv(cleaned_data, file="outputs/data/cleaned_lead_data.csv")
+raw_data <- read_csv(here::here("inputs/data/raw_data.csv"))
+
+cleaned_dataset <-
+  read_csv(
+    here::here("outputs/data/cleaned_data.csv")
+  )
 ```
 
 
@@ -37,17 +42,76 @@ Through R programming language [@R] we analyze the data obtained from Open data 
 
 The Introduction is followed by the Data section. Within the data section we talk about the data source used for this report, the data cleaning process applied and the result that is the visual analysis of trends and pattern involved. The Discussion section shares additional insights into the data findings, as well as discussing measurement errors and limitations of this analysis. Lastly, the document summarizes the analysis.
 
-# Data
+# Data {#sec-2}
+
+## Data Source
+
+The data used in this paper was collected by the OpenDataToronto Library [@citeODT]. The specific dataset used in this research is the
+'Police-Annual-Statistical-Report-Victims-of-Crimes' [@citeDataset] from the year 2014 to 2022. The dataset is categorized by crime subtype against a person, so basically four-types: Assault, Robbery, Sexual Violation, and Other offenses. The stratification of the dataset follows victim demographics such as age group, age cohort and gender.
+
+
+## Data Cleaning
+```{r}
+#| label: tbl-Cleaned-data-output
+#| tbl-cap: Sample of Cleaned Victim Dataset 
+#| echo: false
+head(cleaned_dataset) |>
+  kable(
+    col.names = c("ID", "YEAR", "CRIME", "SEX", "AGE_GROUP", "AGE_COHORT", "VICTIM_COUNT"),
+    booktabs = TRUE
+    )
+```
+
+Data used in this paper was downloaded, cleaned and analyzed with the programming language R [@citeR]. Also with support of additional packages in R: `tidyverse` [@citeTidyverse], `ggplot2` [@citeGgplot], `janitor` [@citeJanitor], `dplyr` [@citeDplyr], `readr` [@citeReadr], `knitr` [@citeknitr]. The Table 1 showcases the cleaned dataset from the raw data extraced from the 'Police-Annual-Statistical-Report-Victims-of-Crimes' [@citeDataset].
+
+# Results & Analysis
+
+## Total Victims of Crime over Year
+
+Refer to @tbl-Total-Victims-by-Year which shows the data on totals victims of crime over the period of 2014 to 2022 and corresponding to that a line graph is created, both showcase the annual trend in the number of reported victims. @tbl-Total-Victims-by-Year, titled "Total Victims From 2014-2022", is shown in the tabular format, allowing for quick reference to the absolute numbers of victims per year.
+
+```{r}
+#| label: tbl-Total-Victims-by-Year
+#| tbl-cap: Total Victims From 2014-2022
+#| echo: false
+summarized_data <- cleaned_dataset %>%
+  group_by(report_year) %>%
+  summarize(Total_Count = sum(victim_count))
+
+# Use kable from knitr to create a simple table
+
+  
+summarized_data |>
+  kable(
+    col.names = c("YEAR", "TOTAL VICTIMS OF CRIME"),
+    booktabs = TRUE
+    )  
+```
+
+```{r}
+#| label: fig-ttl-victims
+#| fig-cap: Total Victims of Crime over Year (2014-2022)
+#| echo: false
+#| warning: false
+#| message: false
+
+# Creating the line graph
+ggplot(summarized_data, aes(x = report_year, y = Total_Count)) +
+  geom_line(color = "blue") +  # This creates the line graph
+  geom_point() +  # Optional: adds points at each year
+  labs(title = "Total Victims of Crime",
+       x = "Year",
+       y = "Total Victims of Crime Over Year") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for better readability
+
+```
+
+
+From @fig-ttl-victims - the line graph provides a visual representation of these figures, plotting the total victims of crime over the years. The trend shows a steady increase in Total victim counts from 2014 to 2019, suggesting an increasing rate of victimization during this period and increasing crime rate. However, there is a sharp decline in the year 2020 that invites questions about the potential causes. That was followed by an upward trajectory in 2021 and 2022.
+
+## Demograpic of Victims
 
 
 
-
-
-
-
-
-
-
-
-# References
 
