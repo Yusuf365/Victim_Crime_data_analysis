@@ -1,7 +1,7 @@
 ---
 title: "Analyzing Trends in Crime Against Persons: Insights from the Toronto Police Annual Statistical Report"
 author: "Mohammed Yusuf Shaikh"
-thanks: "Code and data are available at: LINK."
+thanks: "Code and data are available at: https://github.com/Yusuf365/project_file_data_analyisis_1.git"
 date: today
 date-format: long
 abstract: "Public safety and security are a paramount concern in the 21st century, the analysis of statistics in victimology helps to visualize and derive the conclusions of urban crime dynamics. This analytical report delves into the trends of victims of a crime in Toronto from the year 2014 to 2022. This report employs a series of data visualization approaches to examine the relationship between crime incidents and demographic factors. The data reveals significant fluctuations in crime rates in correspond to the socio-economic shifts, including a notable dip in crimes reported during pandemic between 2019-2020. The visualization of the certain trends provides a compelling narrative on the dynamics of victims of crime in Toronto, advocating for all the policymakers to call for a reevaluation of current approaches to public safety and crime prevention."
