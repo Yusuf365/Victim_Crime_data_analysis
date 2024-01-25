@@ -4,7 +4,7 @@ author: "Mohammed Yusuf Shaikh"
 thanks: "Code and data are available at: LINK."
 date: today
 date-format: long
-abstract: "Public Safety and security are a paramount concern in the 21st century, the analysis of statistics in Victimology helps to visualize and derive the conclusions of urban crime dynamics. This analytical report delves into the trends of victims of a crime in Toronto from the year 2014 to 2022. This report employs a series of data visualization approaches to examine the relationship between crime incidents and demographic factors. The data reveals significant fluctuations in crime rates in correspond to the socio-economic shifts, including a notable dip in crimes reported during pandemic between 2019-2020. The visualization of the certain trends provides a compelling narrative on the dynamics of victims of crime in Toronto, advocating for all the policymakers to call for a reevaluation of current approaches to public safety and crime prevention."
+abstract: "Public safety and security are a paramount concern in the 21st century, the analysis of statistics in victimology helps to visualize and derive the conclusions of urban crime dynamics. This analytical report delves into the trends of victims of a crime in Toronto from the year 2014 to 2022. This report employs a series of data visualization approaches to examine the relationship between crime incidents and demographic factors. The data reveals significant fluctuations in crime rates in correspond to the socio-economic shifts, including a notable dip in crimes reported during pandemic between 2019-2020. The visualization of the certain trends provides a compelling narrative on the dynamics of victims of crime in Toronto, advocating for all the policymakers to call for a reevaluation of current approaches to public safety and crime prevention."
 format: pdf
 fig-pos: "H"
 toc: true
@@ -37,7 +37,7 @@ cleaned_dataset <-
 
 # Introduction
 
-Concern of public safety in the urban societies is a necessary step towards safeguarding the residents of that community. The city of Toronto has various socio-economic challenges one of them being crime against a person. A crime incident might leave a victim and our report aims to explore the patterns and trend of crimes against the person. The paper aims to understand how this trends have evolved among victims and to analyze their demographics from 2014 to 2022. Furthermore, it's important to note that the report's scope extends beyond merely quantifying crime victims but it also interpret and explain whereby it motivates to a better approach towards urban safety and policies. The Criminal victimization is a frightening and unsettling experience for many Canadians (@statscanada).
+Concern of public safety in the urban societies is a necessary step towards safeguarding the residents of that community. The city of Toronto has various socio-economic challenges one of them being crime against a person. A crime incident might leave a victim and our report aims to explore the patterns and trend of crimes against the person. The paper aims to understand how this trends have evolved among victims and to analyze their demographics from 2014 to 2022. Furthermore, it's important to note that the report's scope extends beyond merely quantifying crime victims but it also interpret and explain whereby it motivates to a better approach towards urban safety and policies. The criminal victimization is a frightening and unsettling experience for many Canadians (@statscanada).
 Victimology is a vast sub-category of criminology to understand various emotional factors and its causation, however based on our police annual report – victims of  crime showcase a statistical record based on which the report will share the knowledge to work on the gap to understand between victim demographics and crime. This report addresses this gap by visualizing crime statistics through a demographic lens, thereby unveiling patterns that may not be evident in numerical data alone. Through R programming language [@R], in this report, we analyze the data obtained. from Open data Toronto Portal [@rOpenDataToronto]. This dataset provides a detailed account of all recorded count of victim under the jurisdiction of the Toronto Police Services over an eight-period. Our research offers an examination of cleaned data points and produced visual formats that reveal the shapes the crime type as well as their victims across different genders and age cohorts. The analysis, supplemented with various analytical tools like Tidyverse [@rTidyverse], AER [@rAER], Janitor [@rJanitor], and Knitr [@rKnitr], delves deep into the trends, revealing patterns that could have implications for policy formulation and implementation. Following this introduction, the Data section discusses our data sources, cleaning process, and the resultant visual analysis. The Discussion section delves into the implications of our findings, addressing potential measurement errors and limitations. Finally, the paper concludes with a summary of our analysis and its implications for policy formulation
 
 # Data {#sec-2}
@@ -45,7 +45,7 @@ Victimology is a vast sub-category of criminology to understand various emotiona
 ## Data Source
 
 The data used in this paper were collected by the OpenDataToronto Library [@rOpenDataToronto]. The specific dataset used in this research is the
-'Police-Annual-Statistical-Report-Victims-of-Crimes' [@citeDataset] from the year 2014 to 2022. The dataset is categorized by crime against a person, so subtype includes: assault, robbery, sexual Violation, and other offenses. The stratification of the dataset follows victim demographics such as age group, age cohort, and gender.
+'Police-Annual-Statistical-Report-Victims-of-Crimes' [@citeDataset] from the year 2014 to 2022. The dataset is categorized by crime against a person, so subtype includes: assault, robbery, sexual violation, and other offenses. The stratification of the dataset follows victim demographics such as age group, age cohort, and gender.
 
 
 ## Data Cleaning
@@ -63,7 +63,7 @@ head(cleaned_dataset) |>
     )
 ```
 
-The Table 1 (@tbl-Cleaned-data-output) showcases the cleaned dataset from the raw data extracted from the 'Police-Annual-Statistical-Report-Victims-of-Crimes' [@citeDataset].
+The @tbl-Cleaned-data-output showcases the cleaned dataset from the raw data extracted from the 'Police-Annual-Statistical-Report-Victims-of-Crimes' [@citeDataset].
 
 The 'category' & 'assault subtype' columns from the raw data were irrelavant so removed due to their redundancy and lack of relevance to the focus of this study. No other data was discarded without careful consideration of its impact on the overall report.
 
@@ -73,7 +73,7 @@ The 'category' & 'assault subtype' columns from the raw data were irrelavant so 
 
 ## Alternative Datasets
 
-Alternative datasets from other municipal or federal crime databases could have been utilized, but the Toronto Police Service's dataset was chosen for its specificity to the region of interest and for its detailed breakdown of victim demographics, which is central to our analysis.
+Alternative datasets from other municipal or federal crime databases for countries like Canada or US which could have been utilized, but the Toronto Police Service's dataset was chosen for its specificity to the region of interest and for its detailed breakdown of victim demographics, which is central to our analysis.
 
 
 # Results {#sec-3}
@@ -225,8 +225,7 @@ ggplot(crimes_age_subtype, aes(x = total_count, y = reorder(age_cohort, total_co
 
 ```
 @fig-Total-Victims-by-Age More than half of victims between the age cohort of '25 to 34' has the highest total count of crime victims across all crime categories, indicating this age group has the most affected  victims of a crime. 
-The '18 to 24' and '35 to 44' cohorts also have significant total counts of victims, with assault being the predominant crime subtype. This may reflect a vulnerability or exposure to crime among these younger adult age groups.
-The '45 to 54' and '55 to 64' age cohorts show moderate victim counts, with assault still being the most common subtype, but with a noticeable presence of other crime types as well. The '65+' and '<12' age groups have lower total counts of crime victims, indicating a lower incidence of victimization in the oldest and youngest cohorts. However, it's important to note that the impact of crime on these groups can be particularly profound. The '12 to 17' cohort, representing youth, shows a considerable count of victims, predominantly in the assault subtype. This highlights the importance of focusing on crime prevention strategies for adolescents. The 'Unknown' category has the least total count, indicating that these may be incidents where the victim's age was not reported or could not be reported or determine
+The '18 to 24' and '35 to 44' cohorts also have significant total counts of victims, with assault being the predominant crime subtype. This may reflect a vulnerability or exposure to crime among these younger adult age groups. The '45 to 54' and '55 to 64' age cohorts show moderate victim counts, with assault still being the most common crime , but with a noticeable presence of other crime types as well. The '65+' and '<12' age groups have lower total counts of crime victims, indicating a lower incidence of victimization in the oldest and youngest cohorts. However, it's important to note that the impact of crime on these groups can be particularly profound. The '12 to 17' cohort, representing youth, shows a considerable count of victims, predominantly in the assault crime. This highlights the importance of focusing on crime prevention strategies for teenage students. The 'Unknown' category has the least total count, indicating that these may be incidents where the victim's age was not reported.
 
 # Discussion {#sec-4}
 
