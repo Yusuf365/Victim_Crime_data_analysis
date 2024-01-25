@@ -6,6 +6,7 @@ date: today
 date-format: long
 abstract: "Public Safety and security are a paramount concern in the 20th century, the analysis of statistics in Victimology helps to visualize and derive the conclusions of urban crime dynamics. This analytical report delves into the trends of victims of a certain crime in Toronto from the year 2014 to 2022. Through a series of data visualization approach to examine the relationship between crime incidents and demographic factors. The data reveals significant fluctuations in crime rates in correspond to the socio-economic shifts, including a notable dip in crimes reported during pandemic between 2019-2020. The visualization of the certain trends provides a compelling narrative on the dynamics of victims of crime in Toronto, advocating for all the policymakers to call for a reevaluation of current approaches to public safety and crime prevention."
 format: pdf
+fig-pos: "H"
 number-sections: true
 bibliography: references.bib
 ---
@@ -38,7 +39,7 @@ The concern of Public safety in the Urban society is a necessary step towards sa
 
 Victimology is a vast sub-category of criminology to understand various emotional factors and its causation, however based on our police annual report – victims of  crime showcase a statistical record based on which the report will share the knowledge to work on the gap to understand between victim demographics and crime. This report addresses this gap by visualizing crime statistics through a demographic lens, thereby unveiling patterns that may not be evident in numerical data alone
 
-Through R programming language [@R] we analyze the data obtained from Open data Toronto [Open data Toronto]. This dataset provides a detailed account of all recorded count of victim under the jurisdiction of the Toronto Police Services over an eight-period. Our research offers an examination of cleaned data points and produced visual formats that reveal the shapes the crime type as well as their victims across different genders and age cohorts. The analysis, supplemented with various analytical tools like Tidyverse [@tidyverse], Janitor [@janitor], and Knitr [@knitr], delves deep into the trends, revealing patterns that could have implications for policy formulation and implementation.
+Through R programming language [@R] we analyze the data obtained from Open data Toronto Portal [@rOpenDataToronto]. This dataset provides a detailed account of all recorded count of victim under the jurisdiction of the Toronto Police Services over an eight-period. Our research offers an examination of cleaned data points and produced visual formats that reveal the shapes the crime type as well as their victims across different genders and age cohorts. The analysis, supplemented with various analytical tools like Tidyverse [@rTidyverse], AER [@rAER], Janitor [@rJanitor], and Knitr [@rKnitr], delves deep into the trends, revealing patterns that could have implications for policy formulation and implementation.
 
 The Introduction is followed by the Data section. Within the data section we talk about the data source used for this report, the data cleaning process applied and the result that is the visual analysis of trends and pattern involved. The Discussion section shares additional insights into the data findings, as well as discussing measurement errors and limitations of this analysis. Lastly, the document summarizes the analysis.
 
@@ -46,11 +47,14 @@ The Introduction is followed by the Data section. Within the data section we tal
 
 ## Data Source
 
-The data used in this paper was collected by the OpenDataToronto Library [@citeODT]. The specific dataset used in this research is the
-'Police-Annual-Statistical-Report-Victims-of-Crimes' [@citeDataset] from the year 2014 to 2022. The dataset is categorized by crime subtype against a person, so basically four-types: Assault, Robbery, Sexual Violation, and Other offenses. The stratification of the dataset follows victim demographics such as age group, age cohort and gender.
+The data used in this paper was collected by the OpenDataToronto Library [@rOpenDataToronto]. The specific dataset used in this research is the
+'Police-Annual-Statistical-Report-Victims-of-Crimes' [@citeDataset] from the year 2014 to 2022. The dataset is categorized by crime against a person, so subtype includes: Assault, Robbery, Sexual Violation, and Other offenses. The stratification of the dataset follows victim demographics such as age group, age cohort and gender.
 
 
 ## Data Cleaning
+
+Data used in this paper was downloaded, cleaned and analyzed with the programming language R [@R]. Also with support of additional packages in R: `tidyverse` [@rTidyverse], `janitor` [@rJanitor], `dplyr` [@rDplyr], `readr` [@rReadr].
+
 ```{r}
 #| label: tbl-Cleaned-data-output
 #| tbl-cap: Sample of Cleaned Victim Dataset 
@@ -62,9 +66,20 @@ head(cleaned_dataset) |>
     )
 ```
 
-Data used in this paper was downloaded, cleaned and analyzed with the programming language R [@citeR]. Also with support of additional packages in R: `tidyverse` [@citeTidyverse], `ggplot2` [@citeGgplot], `janitor` [@citeJanitor], `dplyr` [@citeDplyr], `readr` [@citeReadr], `knitr` [@citeknitr]. The Table 1 showcases the cleaned dataset from the raw data extraced from the 'Police-Annual-Statistical-Report-Victims-of-Crimes' [@citeDataset].
+The Table 1 showcases the cleaned dataset from the raw data extracted from the 'Police-Annual-Statistical-Report-Victims-of-Crimes' [@citeDataset].
 
-# Results & Analysis
+The 'category' & 'assault subtype' columns from the raw data were irrelavant so removed due to their redundancy and lack of relevance to the focus of this study. No other data was discarded without careful consideration of its impact on the overall report.
+
+
+
+
+
+## Alternative Datasets
+
+Alternative datasets from other municipal or federal crime databases could have been utilized, but the Toronto Police Service's dataset was chosen for its specificity to the region of interest and for its detailed breakdown of victim demographics, which is central to our analysis.
+
+
+# Results {#sec-3}
 
 ## Total Victims of Crime over Year
 
@@ -101,17 +116,131 @@ ggplot(summarized_data, aes(x = report_year, y = Total_Count)) +
   geom_point() +  # Optional: adds points at each year
   labs(title = "Total Victims of Crime",
        x = "Year",
-       y = "Total Victims of Crime Over Year") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for better readability
-
+       y = "Total Victims of Crime") +
+  theme_minimal()
 ```
 
 
 From @fig-ttl-victims - the line graph provides a visual representation of these figures, plotting the total victims of crime over the years. The trend shows a steady increase in Total victim counts from 2014 to 2019, suggesting an increasing rate of victimization during this period and increasing crime rate. However, there is a sharp decline in the year 2020 that invites questions about the potential causes. That was followed by an upward trajectory in 2021 and 2022.
 
-## Demograpic of Victims
+## Demographics of Victim 
+
+### By Gender
+@fig-victims-by-Gender displays the distribution of victims of crimes grouped by gender across different years, from 2014 to 2022. The bars represent the total count of victims for each gender category, with separate colors for females (F), males (M), and an Unknown category (U). We can infer for every year from 2014-22 Female victims have higher count compared to Male victims. The data also showcase significantly lower number of victims as the remain ‘Unknown’.  The figure high variation in terms of victims of crime over year. There isn’t any clear pattern in the data.A notable decrease in victim count for all genders can be seen around 2020. This could be an area of further investigation, as external factors such as the COVID-19 pandemic may have influenced crime rates and reporting.
+ 
+
+```{r}
+#| label: fig-victims-by-Gender
+#| fig-cap: Total Victims of Crime over Year (2014-2022)
+#| echo: false
+#| warning: false
+#| message: false
+victim_gender_year <- cleaned_dataset %>%
+  group_by(report_year, sex) %>%
+  summarise(total_victim_count = sum(victim_count)) %>%
+  ungroup()
+
+ggplot(victim_gender_year, aes(x = report_year, y = total_victim_count, fill = sex)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  labs(title = "Victims of Crime by Gender Across Years",
+       x = "Year",
+       y = "Total Victim Count",
+       fill = "Gender") +
+  theme_minimal()
+```
 
 
+### By Age Group
+
+Moving on, Victims belong to different groups and from the @tbl-Avg-Victim-of-crime-by-age-group.
+As depicted in Table 3, the sample summary of statistics by age group, we observed that the average victim of crime for Adults and Youth are relatively high compared to Children and Unknown age groups throughout the the 8-year period More Specifically, Adults had an average victims over the years has been the highest that is approximately 259, and even the Youths have considerably high, about 266 victims per year. In contrast, Children has low average no.of victims i.e. about 134 victims per year, and the Unknown category had the lowest victims.
+ 
+```{r}
+#| label: tbl-Avg-Victim-of-crime-by-age-group
+#| tbl-cap: Average Victims by Age Group (2014-2022)
+#| echo: false
+
+cleaned_dataset |>
+  group_by(age_group) |>
+  summarize(
+    mean_Victim_count = mean(victim_count),
+  ) |>
+  kable(
+    col.names = c("Crime", "Average Victim Count"),
+    booktabs = TRUE
+    )
+
+```
+
+
+Followed by @tbl-Avg-Victim-of-crime-by-age-group we created a line graph which provides visual represenation of the age group and the trend it follows from 2014-2022. So from @fig-Avg-Victims-2014-2022 it is oberved that the Adult and Youth age groups exhibit a higher and more volatile trend line over the years, indicating fluctuations in the number of victims. The Adult & Youth category, in particular, shows a peak around 2018, followed by a decline and a subsequent rise by 2022. On the other hand, the Child group's line remains fairly consistent with a slight increase over the years, and the Unknown category's line is the flattest, indicating the least variation in victim counts over the years but has remain consistent.
+```{r}
+#| label: fig-Avg-Victims-2014-2022
+#| fig-cap: The Average No. of Victims over eight-year period
+#| echo: false
+#| warning: false
+#| message: false
+
+# Assuming cleaned_dataset is your data frame and it has the columns 'report_year', 'age_group', and 'victim_count'
+average_victims_per_year_age_group <- cleaned_dataset %>%
+  group_by(report_year, age_group) %>%
+  summarize(avg_victim_count = mean(victim_count)) %>%
+  ungroup()
+
+# To visualize this data, you can create a line plot for each age group
+ggplot(average_victims_per_year_age_group, aes(x = report_year, y = avg_victim_count, group = age_group, color = age_group)) +
+  geom_line() +  # Add lines for each age group
+  geom_point() +  # Add points
+  labs(title = "Average Number of Victims per Year by Age Group",
+       x = "Year",
+       y = "Average Number of Victims",
+       color = "Age Group") +
+  theme_minimal() +
+  theme(legend.position = "bottom")  # Position the legend at the bottom
+
+```
+
+
+### By Age Cohort
+
+```{r}
+#| label: fig-Total-Victims-by-Age 
+#| fig-cap: Overall Victims by Age-Cohort & Crime categories in eight-year Period
+#| echo: false
+#| warning: false
+#| message: false
+
+
+# Summarize the total count by age cohort and subtype
+crimes_age_subtype <- cleaned_dataset %>%
+  group_by(age_cohort, subtype) %>%
+  summarise(total_count = sum(victim_count)) # Ensure grouped data is ungrouped after summarization
+
+# Create a horizontal bar graph for Crimes by Age Cohort and Subtype
+ggplot(crimes_age_subtype, aes(x = total_count, y = reorder(age_cohort, total_count), fill = subtype)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Victim of Crime by Age Cohort and Crime Subtype",
+       x = "Total Count",
+       y = "Age Cohort") +
+  theme_minimal() +
+  theme(legend.position = "bottom") # Adjust legend position if necessary
+
+
+```
+@fig-Total-Victims-by-Age More than half of victims between the age cohort of '25 to 34' has the highest total count of crime victims across all crime categories, indicating this age group has the most affected  victims of a crime. 
+The '18 to 24' and '35 to 44' cohorts also have significant total counts of victims, with assault being the predominant crime subtype. This may reflect a vulnerability or exposure to crime among these younger adult age groups.
+The '45 to 54' and '55 to 64' age cohorts show moderate victim counts, with assault still being the most common subtype, but with a noticeable presence of other crime types as well. The '65+' and '<12' age groups have lower total counts of crime victims, indicating a lower incidence of victimization in the oldest and youngest cohorts. However, it's important to note that the impact of crime on these groups can be particularly profound. The '12 to 17' cohort, representing youth, shows a considerable count of victims, predominantly in the assault subtype. This highlights the importance of focusing on crime prevention strategies for adolescents. The 'Unknown' category has the least total count, indicating that these may be incidents where the victim's age was not reported or could not be reported or determine
+
+# Discussion {#sec-4}
+
+Our comprehensive analysis of crime data from 2014 to 2022 in Toronto has revealed distinct patterns of victimization across various demographics. The analysis conducted in the Result section highlights a worrying trend of increased victimization up to 2019 which implies a wave of increase in crime the criminal activity in the city of Toronto. The followed by a sudden decline the victims number in 2020, and a resurgence thereafter. This pattern could be influenced by the global pandemic, underscoring the interplay between societal factors and crime rates. The data align with broader trends noted in the literature, including the risk among young adults. Also The victims by gender showcase female have higher threats as majority of time the victims tend to be women. The comparative victimization rates between genders reveal entrenched patterns that necessitate a gender-responsive approach to crime prevention. As the @fig-victims-by-Gender, and age, detailed in @tbl-Avg-Victim-of-crime-by-age-group and @fig-Avg-Victims-2014-2022. This requires a prompt reevaluation in the strategies of targeted crime prevention policies. The victim of the '25 to 34' age cohort demands a policy response as well as research under the high victim count can help address the vulnerabilities of this demographic. 
+
+While our report provides a molecular insight into crime’s victim. However, there exist some limitations, such as the 'Unknown' category signifies gaps in data collection. Moreover, the categorization of crimes and the category ‘Other’ are areas where data refinement could spot some light on. The use of police-reported data does not showcase the motive or the relationship between victim and criminal, as not all incidents are reported. The insight does not represent the complexity of individual cases.
+
+# Conclusion {#sec-5}
+
+In conclusion to our report, Victims of Crime in Toronto the years of 2014 to 2022 has highlighted evident patterns and trends, most particularly the disproportionate impact of crime on the victims of age 25 to 34-year-old. The analysis indicates that young adults face the highest rates of victimization, while there is a notable decrease in reported victims during the pandemic year of 2020, hinting at the influence of external factors on crime trends. Gender disparities in victimization were also evident, with females consistently representing a higher percentage of victims. However there is also need for improved data collection and explore new approach to crime prevention that will address vulnerabilities & public safety policies of different demographic segments. 
+
+# Referneces {#sec-6}
 
 
